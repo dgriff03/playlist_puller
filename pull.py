@@ -29,6 +29,8 @@ sleep(10)
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import urllib
+
 mp3url = "http://www.youtube-mp3.org/"
 #Uses firefox browser -- must be installed!
 browser = webdriver.Firefox()
@@ -55,5 +57,7 @@ browser.close()
 
 print "Failure rate: {}".format( float(count) / len(videos))
 
-print links
-    
+for i,link in enumerate(links):
+    file_name = "{}.mp3".format(i)
+    urllib.urlretrieve(link,file_name)
+
